@@ -73,7 +73,7 @@ foreach ($RequiredModule in $Requirements) {
     if ($InstalledModule -and ($InstalledModule[0].Version -gt [Version]$RequiredModule.Version)) {
         Write-Host "    -> Installing required version of $($RequiredModule.Name)"
         Install-Module @ModuleParams
-        Import-Module -Name $RequiredModule.Name -RequiredVersion $ModuleParams.RequiredVersion -Force
+        # Import-Module -Name $RequiredModule.Name -RequiredVersion $ModuleParams.RequiredVersion -Force
     }
 
     if (!$InstalledModule) {
@@ -89,14 +89,14 @@ foreach ($RequiredModule in $Requirements) {
 # --- Set Build Environment
 Set-BuildEnvironment -Force
 
-# # --- Set Psake parameters
-# $PsakeBuildParameters = @{
-#     BuildFile = "$($PSScriptRoot)\build.psake.ps1"
+# --- Set Psake parameters
+$PsakeBuildParameters = @{
+    BuildFile = "$($PSScriptRoot)\build.psake.ps1"
 
-#     TaskList = $Task
-#     Nologo = $true
-# }
+    TaskList = $Task
+    Nologo = $true
+}
 
-# # --- Start Build
-# Invoke-Psake @PsakeBuildParameters -Verbose:$VerbosePreference
-# exit ([int](-not $psake.build_success))
+# --- Start Build
+Invoke-Psake @PsakeBuildParameters -Verbose:$VerbosePreference
+exit ([int](-not $psake.build_success))
