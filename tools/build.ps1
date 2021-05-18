@@ -44,7 +44,7 @@ $Requirements = @(
     },
     @{
         Name = "Pester"
-        Version = "5.1.0"
+        Version = "5.1.1"
     },
     @{
         Name = "platyPS"
@@ -73,17 +73,12 @@ foreach ($RequiredModule in $Requirements) {
     if ($InstalledModule -and ($InstalledModule[0].Version -gt [Version]$RequiredModule.Version)) {
         Write-Host "    -> Installing required version of $($RequiredModule.Name)"
         Install-Module @ModuleParams
-        # Import-Module -Name $RequiredModule.Name -RequiredVersion $ModuleParams.RequiredVersion -Force
     }
 
     if (!$InstalledModule) {
         Write-Host "    -> Installing $($RequiredModule.Name)"
         Install-Module @ModuleParams
     }
-
-    # Import-Module -Name $RequiredModule.Name -Force
-
-    Get-Module -Name $RequiredModule.Name
 }
 
 # --- Set Build Environment
@@ -92,7 +87,6 @@ Set-BuildEnvironment -Force
 # --- Set Psake parameters
 $PsakeBuildParameters = @{
     BuildFile = "$($PSScriptRoot)\build.psake.ps1"
-
     TaskList = $Task
     Nologo = $true
 }
