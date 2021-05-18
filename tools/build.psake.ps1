@@ -1,4 +1,4 @@
-#Requires -Modules @{ModuleName="PSake"; RequiredVersion="4.90"},@{ModuleName="PSScriptAnalyzer"; RequiredVersion="1.19.1"},@{ModuleName="BuildHelpers"; RequiredVersion="2.0.15"}
+#Requires -Modules @{ModuleName="PSake"; RequiredVersion="4.9.0"},@{ModuleName="PSScriptAnalyzer"; RequiredVersion="1.19.1"},@{ModuleName="BuildHelpers"; RequiredVersion="2.0.15"}
 #Requires -Modules @{ModuleName="Pester"; RequiredVersion="5.1.1"},@{ModuleName="platyPS"; RequiredVersion="0.14.1"}
 
 
