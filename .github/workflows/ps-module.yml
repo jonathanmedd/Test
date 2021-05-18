@@ -1,0 +1,24 @@
+name: Process PS Module
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+
+    name: Build module
+    runs-on: windows-latest
+    steps:
+
+      - name: Check out repository code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Execute Build
+        run: tools/build.ps1 -Task BuildWithTests
+        shell: pwsh
