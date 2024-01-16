@@ -1,5 +1,5 @@
 mode: Mainline
 major-version-bump-message: '(?-i)(BREAKING CHANGE|MAJOR):'
 minor-version-bump-message: '(feat|feature|minor):'
-patch-version-bump-message: '(fix|patch|style|refactor|build(deps)):'
-no-bump-message: '(none|skip|build|chore|ci|perf|test|docs):'
+patch-version-bump-message: '(fix|patch|style|refactor|build)(\(.*\))?:'
+no-bump-message: '(none|skip|chore|ci|perf|test|docs):'
